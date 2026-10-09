@@ -47,6 +47,10 @@ h3{font-size:17px;margin:0 0 10px;text-align:center}
 .fig{margin:0 auto 10px;max-width:900px}
 .fig img{width:100%;display:block;border-radius:10px;background:#fff;padding:8px;border:1px solid var(--line)}
 .fig figcaption{font-size:13px;color:var(--muted);margin-top:8px;text-align:center}
+table.tbl{width:100%;max-width:700px;margin:28px auto 0;border-collapse:collapse;font-size:15px}
+.tbl th,.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:center}
+.tbl th{font-weight:600;color:var(--muted);font-size:13px}
+.tbl td:first-child,.tbl th:first-child{text-align:left}
 footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
 </style>
 </head>
@@ -112,21 +116,25 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
 </section>
 
 <section>
-  <h2>Sorting Cables of Every Color</h2>
-  <p class="lead">Autonomous rollouts for each cable color.</p>
+  <h2>Cables of Different Diameters</h2>
+  <p class="lead">The policy is trained on 1.7, 2.6 and 4.5 mm cables, and still separates the 2.2 and 3.5 mm cables it has never seen.</p>
+  <figure class="fig" style="max-width:760px;margin-bottom:26px">
+    <img src="static/images/cable_diameters.jpg" alt="Cables of 1.7, 2.2, 2.6, 3.5 and 4.5 mm diameter laid out next to a ruler">
+    <figcaption>The five cable diameters used in the experiments.</figcaption>
+  </figure>
   <div class="grid g5">
-    <figure class="clip port" data-src="static/videos/color1_outside.mp4" data-tag="Outside" data-cap="Color 1"></figure>
-    <figure class="clip port" data-src="static/videos/color2_outside.mp4" data-tag="Outside" data-cap="Color 2"></figure>
-    <figure class="clip port" data-src="static/videos/color3_outside.mp4" data-tag="Outside" data-cap="Color 3"></figure>
-    <figure class="clip port" data-src="static/videos/color4_outside.mp4" data-tag="Outside" data-cap="Color 4"></figure>
-    <figure class="clip port" data-src="static/videos/color5_outside.mp4" data-tag="Outside" data-cap="Color 5"></figure>
+    <figure class="clip port" data-src="static/videos/color1_outside.mp4" data-tag="Outside" data-cap="1.7 mm (trained)"></figure>
+    <figure class="clip port" data-src="static/videos/color2_outside.mp4" data-tag="Outside" data-cap="2.2 mm (unseen)"></figure>
+    <figure class="clip port" data-src="static/videos/color3_outside.mp4" data-tag="Outside" data-cap="2.6 mm (trained)"></figure>
+    <figure class="clip port" data-src="static/videos/color4_outside.mp4" data-tag="Outside" data-cap="3.5 mm (unseen)"></figure>
+    <figure class="clip port" data-src="static/videos/color5_outside.mp4" data-tag="Outside" data-cap="4.5 mm (trained)"></figure>
   </div>
   <div class="grid g5 hidden" id="more-colors" style="margin-top:14px">
-    <figure class="clip" data-src="static/videos/color1_inside.mp4" data-tag="Inside" data-cap="Color 1"></figure>
-    <figure class="clip" data-src="static/videos/color2_inside.mp4" data-tag="Inside" data-cap="Color 2"></figure>
-    <figure class="clip" data-src="static/videos/color3_inside.mp4" data-tag="Inside" data-cap="Color 3"></figure>
-    <figure class="clip" data-src="static/videos/color4_inside.mp4" data-tag="Inside" data-cap="Color 4"></figure>
-    <figure class="clip" data-src="static/videos/color5_inside.mp4" data-tag="Inside" data-cap="Color 5"></figure>
+    <figure class="clip" data-src="static/videos/color1_inside.mp4" data-tag="Inside" data-cap="1.7 mm (trained)"></figure>
+    <figure class="clip" data-src="static/videos/color2_inside.mp4" data-tag="Inside" data-cap="2.2 mm (unseen)"></figure>
+    <figure class="clip" data-src="static/videos/color3_inside.mp4" data-tag="Inside" data-cap="2.6 mm (trained)"></figure>
+    <figure class="clip" data-src="static/videos/color4_inside.mp4" data-tag="Inside" data-cap="3.5 mm (unseen)"></figure>
+    <figure class="clip" data-src="static/videos/color5_inside.mp4" data-tag="Inside" data-cap="4.5 mm (trained)"></figure>
   </div>
   <button class="more" data-target="more-colors">More</button>
 </section>
@@ -134,7 +142,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
 <section>
   <h2>Effect of Tactile Resolution</h2>
   <p class="lead">Policies trained with GelSight images at different resolutions.</p>
-  <figure class="fig" style="margin-bottom:26px">
+  <figure class="fig" style="max-width:620px;margin-bottom:26px">
     <img src="static/images/resolution_attention.jpg" alt="Tactile input and cross-attention maps at 500x375, 320x240, 160x120 and 88x66">
     <figcaption>(a) tactile input, (b) cross-attention on the tactile image, (c) cross-attention on the camera image. The policy shifts its attention away from the fingertip as the resolution drops.</figcaption>
   </figure>
@@ -151,6 +159,17 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
     <figure class="clip port" data-src="static/videos/gs88_outside.mp4" data-tag="Outside" data-cap="88 x 66"></figure>
     <figure class="clip port" data-src="static/videos/gs0_outside.mp4" data-tag="Outside" data-cap="No tactile"></figure>
   </div>
+  <table class="tbl">
+    <thead><tr><th>Tactile image resolution</th><th>Pick</th><th>Separation</th><th>Completion detection</th></tr></thead>
+    <tbody>
+      <tr><td>500 x 375 (raw)</td><td>5/5</td><td>4/5</td><td>3/5</td></tr>
+      <tr><td>320 x 240</td><td>4/5</td><td>3/5</td><td>3/5</td></tr>
+      <tr><td>160 x 120</td><td>4/5</td><td>2/5</td><td>2/5</td></tr>
+      <tr><td>88 x 66</td><td>2/5</td><td>1/5</td><td>1/5</td></tr>
+      <tr><td>No tactile input</td><td>4/5</td><td>2/5</td><td>0/5</td></tr>
+    </tbody>
+  </table>
+  <p class="lead" style="margin:8px auto 0;font-size:13px">Success rates on the cable separation task over five trials.</p>
   <button class="more" data-target="more-gs">More</button>
 </section>
 
@@ -172,13 +191,9 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
       </div>
     </div>
   </div>
-</section>
-
-<section>
-  <h2>Failure Cases</h2>
-  <figure class="fig">
-    <img src="static/images/failure_cases.jpg" alt="Two failure cases: dropping all cables, and a cable caught at the base of the fingers">
-    <figcaption>(a) all three cables are dropped, (b) a cable is caught at the base of the fingers.</figcaption>
+  <figure class="fig" style="max-width:640px;margin-top:26px">
+    <img src="static/images/other_tasks.jpg" alt="Successive frames of waterproof packing separation and nut fastening">
+    <figcaption>(a) Waterproof packing separation: the hand grasps three packings together and releases them one at a time. (b) Nut fastening: the thumb and index finger turn a nut onto a bolt while the remaining three fingers stay idle, with the thumb tactile image inset.</figcaption>
   </figure>
 </section>
 
