@@ -44,6 +44,9 @@ h3{font-size:17px;margin:0 0 10px;text-align:center}
 .hidden{display:none}
 .task{background:var(--card);border-radius:14px;padding:18px}
 .task .clip video,.task .clip .ph{background:var(--bg)}
+.fig{margin:0 auto 10px;max-width:900px}
+.fig img{width:100%;display:block;border-radius:10px;background:#fff;padding:8px;border:1px solid var(--line)}
+.fig figcaption{font-size:13px;color:var(--muted);margin-top:8px;text-align:center}
 footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
 </style>
 </head>
@@ -53,11 +56,33 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
   <h1>Contact-Rich Fine Multi-Finger Manipulation for Multiple Object Separation with Optical Tactile Sensing and Imitation Learning</h1>
   <p class="sub">Anonymous Submission</p>
   <p class="sub" style="font-size:14px;margin-top:8px">All videos are muted. The playback speed is shown in each clip.</p>
+  <figure class="fig" style="max-width:620px;margin-top:28px">
+    <img src="static/images/teaser.jpg" alt="Separating a target cable from a three-cable bundle with a tactile-equipped five-fingered hand">
+    <figcaption>Separating a target cable from a three-cable bundle. The middle, ring and little fingers support the bundle while the thumb and index finger, equipped with optical tactile sensors, insert into the gap and draw out only the target cable.</figcaption>
+  </figure>
 </header>
 
 <section>
   <h2>Abstract</h2>
   <p class="abstract">Automobiles are composed of multiple parts, many of which are deformable such as thin cables and rubber sheets. Automating the handling of these deformable objects remains a difficult task for robot hands, as it requires recognizing fine contact states while performing dexterous take-out motions under continuous change. In this study, we propose an imitation learning pipeline for multi-fingered fine dexterous manipulation with human-mimetic optical tactile sensors at the thumb and index fingertips, while the other three fingers support the objects against gravity, which is critical for deformable linear objects (DLOs). Demonstrations are collected by data-glove teleoperation to capture humans' synchronized smooth motions, and Action Chunking with Transformer (ACT) generates human-like motion through its action chunking and temporal ensembling. The observation consists of two external camera images (640 x 480), two fingertip tactile images (500 x 375), and the joint angles of a 6-DOF UR5e arm and a 20-DOF DG-5F hand. Taking the separation of a target cable from a cable bundle as the main task, the ACT achieves an 80% success rate, and remains capable against cables of unseen thickness. A comparative experiment reveals the advantage of high-resolution tactile information: 500 x 375 achieves the best success rates compared with models trained at lower resolutions. A cross-attention analysis shows that the policy shifts its attention away from the fingertip as the resolution drops. We further show that the pipeline extends to other fine multiple-object tasks, such as fastening a nut and separating a rubber waterproof packing from a hook-hung stack. The fastening task embraces a one-object-to-multiple-objects touch as an inverted scenario of the main cable task, verifying the generalizability of the proposed method to such touch states.</p>
+</section>
+
+<section>
+  <h2>System</h2>
+  <p class="lead">A 6-DOF UR-5e arm with a 20-DOF DG-5F hand, two external cameras and two fingertip optical tactile sensors.</p>
+  <figure class="fig">
+    <img src="static/images/hardware.jpg" alt="Hardware overview: leader side with data glove and leader arm, follower side with UR-5e and DG-5F hand, and the two tactile images">
+    <figcaption>Teleoperation (leader side), robot hardware (follower side), and the tactile images from the thumb and index fingertips.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Method</h2>
+  <p class="lead">Demonstrations collected by data-glove teleoperation train an ACT policy on camera images, tactile images and joint angles.</p>
+  <figure class="fig">
+    <img src="static/images/pipeline.jpg" alt="Pipeline: teleoperation, training with ResNet18 and ACT transformer, and deployment with temporal ensembling">
+    <figcaption>Teleoperation, training and deployment. Each of the four image inputs is encoded by its own ResNet18, and the ACT transformer predicts an action chunk over the 26-dimensional joint command.</figcaption>
+  </figure>
 </section>
 
 <section>
@@ -109,6 +134,10 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
 <section>
   <h2>Effect of Tactile Resolution</h2>
   <p class="lead">Policies trained with GelSight images at different resolutions.</p>
+  <figure class="fig" style="margin-bottom:26px">
+    <img src="static/images/resolution_attention.jpg" alt="Tactile input and cross-attention maps at 500x375, 320x240, 160x120 and 88x66">
+    <figcaption>(a) tactile input, (b) cross-attention on the tactile image, (c) cross-attention on the camera image. The policy shifts its attention away from the fingertip as the resolution drops.</figcaption>
+  </figure>
   <div class="grid g4">
     <figure class="clip" data-src="static/videos/gs500_inside.mp4" data-tag="Inside" data-cap="500 x 375"></figure>
     <figure class="clip" data-src="static/videos/gs320_inside.mp4" data-tag="Inside" data-cap="320 x 240"></figure>
@@ -143,6 +172,14 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
       </div>
     </div>
   </div>
+</section>
+
+<section>
+  <h2>Failure Cases</h2>
+  <figure class="fig">
+    <img src="static/images/failure_cases.jpg" alt="Two failure cases: dropping all cables, and a cable caught at the base of the fingers">
+    <figcaption>(a) all three cables are dropped, (b) a cable is caught at the base of the fingers.</figcaption>
+  </figure>
 </section>
 
 <footer>This page is anonymized for review.</footer>
