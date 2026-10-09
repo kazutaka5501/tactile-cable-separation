@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAPER TITLE</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--fg:#16181d;--muted:#5f6570;--line:#e6e8ec;--card:#f3f4f7;--act:#2563eb;--dp:#9aa0ab}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e8eaee;--muted:#9aa1ab;--line:#262a31;--card:#181b21;--act:#7aa7ff;--dp:#6b7280}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,sans-serif}
+main{max-width:1120px;margin:0 auto;padding:0 16px 80px}
+header{text-align:center;padding:72px 0 28px}
+h1{font-size:clamp(27px,4.2vw,42px);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px;font-weight:700}
+.sub{color:var(--muted);margin:0}
+section{padding:46px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(21px,2.8vw,29px);letter-spacing:-.01em;margin:0 0 6px;text-align:center}
+h3{font-size:17px;margin:0 0 10px;text-align:center}
+.lead{color:var(--muted);text-align:center;margin:0 auto 26px;max-width:700px}
+.abstract{max-width:820px;margin:0 auto;text-align:justify}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g5{grid-template-columns:repeat(5,1fr)}
+@media (max-width:920px){.g4,.g5{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.g2,.g4,.g5{grid-template-columns:1fr}}
+.clip{margin:0;position:relative}
+.clip video,.clip .ph{width:100%;display:block;border-radius:10px;background:var(--card);object-fit:cover;aspect-ratio:4/3}
+.clip.port video,.clip.port .ph{aspect-ratio:9/16}
+.clip.wide video,.clip.wide .ph{aspect-ratio:16/9}
+.clip .ph{border:2px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center;padding:8px;word-break:break-all}
+.clip figcaption{font-size:13px;color:var(--muted);margin-top:6px;text-align:center}
+.tag{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;font-weight:600;padding:2px 7px;border-radius:6px}
+.tag.r{left:auto;right:8px}
+.col-h{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;margin-bottom:10px}
+.dot{width:10px;height:10px;border-radius:50%}
+.pill{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 20px;text-align:center}
+.pill b{display:block;font-size:26px;line-height:1.15}
+.pill span{font-size:13px;color:var(--muted)}
+.more{display:block;margin:20px auto 0;padding:9px 24px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:500 14px Inter,sans-serif;cursor:pointer}
+.more:hover{background:var(--card)}
+.hidden{display:none}
+.task{background:var(--card);border-radius:14px;padding:18px}
+.task .clip video,.task .clip .ph{background:var(--bg)}
+footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>PAPER TITLE</h1>
+  <p class="sub">Anonymous Submission</p>
+  <p class="sub" style="font-size:14px;margin-top:8px">All videos are muted and played at 2x speed.</p>
+</header>
+
+<section>
+  <h2>Abstract</h2>
+  <p class="abstract">ABSTRACT TEXT.</p>
+</section>
+
+<section>
+  <h2>ACT vs. Diffusion Policy</h2>
+  <p class="lead">Both policies are trained on the same 180 demonstrations.</p>
+  <div class="grid g2">
+    <div>
+      <div class="col-h"><span class="dot" style="background:var(--act)"></span>ACT</div>
+      <div class="grid g2">
+        <figure class="clip port" data-src="static/videos/act_outside.mp4" data-tag="Outside"></figure>
+        <figure class="clip" data-src="static/videos/act_inside.mp4" data-tag="Inside"></figure>
+      </div>
+    </div>
+    <div>
+      <div class="col-h"><span class="dot" style="background:var(--dp)"></span>Diffusion Policy</div>
+      <div class="grid g2">
+        <figure class="clip port" data-src="static/videos/dp_outside.mp4" data-tag="Outside"></figure>
+        <figure class="clip" data-src="static/videos/dp_inside.mp4" data-tag="Inside"></figure>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:34px">
+    <h3>Five Consecutive ACT Trials</h3>
+    <div class="pill"><b>4 / 5</b><span>success, recorded in one take</span></div>
+  </div>
+  <figure class="clip wide" data-src="static/videos/act_consecutive.mp4" data-tag="5 trials, uncut" style="max-width:820px;margin:16px auto 0"></figure>
+</section>
+
+<section>
+  <h2>Sorting Cables of Every Color</h2>
+  <p class="lead">Autonomous rollouts for each cable color.</p>
+  <div class="grid g5">
+    <figure class="clip port" data-src="static/videos/color1_outside.mp4" data-tag="Outside" data-cap="Color 1"></figure>
+    <figure class="clip port" data-src="static/videos/color2_outside.mp4" data-tag="Outside" data-cap="Color 2"></figure>
+    <figure class="clip port" data-src="static/videos/color3_outside.mp4" data-tag="Outside" data-cap="Color 3"></figure>
+    <figure class="clip port" data-src="static/videos/color4_outside.mp4" data-tag="Outside" data-cap="Color 4"></figure>
+    <figure class="clip port" data-src="static/videos/color5_outside.mp4" data-tag="Outside" data-cap="Color 5"></figure>
+  </div>
+  <div class="grid g5 hidden" id="more-colors" style="margin-top:14px">
+    <figure class="clip" data-src="static/videos/color1_inside.mp4" data-tag="Inside" data-cap="Color 1"></figure>
+    <figure class="clip" data-src="static/videos/color2_inside.mp4" data-tag="Inside" data-cap="Color 2"></figure>
+    <figure class="clip" data-src="static/videos/color3_inside.mp4" data-tag="Inside" data-cap="Color 3"></figure>
+    <figure class="clip" data-src="static/videos/color4_inside.mp4" data-tag="Inside" data-cap="Color 4"></figure>
+    <figure class="clip" data-src="static/videos/color5_inside.mp4" data-tag="Inside" data-cap="Color 5"></figure>
+  </div>
+  <button class="more" data-target="more-colors">More</button>
+</section>
+
+<section>
+  <h2>Effect of Tactile Resolution</h2>
+  <p class="lead">Policies trained with GelSight images at different resolutions.</p>
+  <div class="grid g4">
+    <figure class="clip" data-src="static/videos/gs500_inside.mp4" data-tag="Inside" data-cap="500 x 375"></figure>
+    <figure class="clip" data-src="static/videos/gs320_inside.mp4" data-tag="Inside" data-cap="320 x 240"></figure>
+    <figure class="clip" data-src="static/videos/gs160_inside.mp4" data-tag="Inside" data-cap="160 x 120"></figure>
+    <figure class="clip" data-src="static/videos/gs88_inside.mp4" data-tag="Inside" data-cap="88 x 66"></figure>
+  </div>
+  <div class="grid g5 hidden" id="more-gs" style="margin-top:14px">
+    <figure class="clip port" data-src="static/videos/gs500_outside.mp4" data-tag="Outside" data-cap="500 x 375"></figure>
+    <figure class="clip port" data-src="static/videos/gs320_outside.mp4" data-tag="Outside" data-cap="320 x 240"></figure>
+    <figure class="clip port" data-src="static/videos/gs160_outside.mp4" data-tag="Outside" data-cap="160 x 120"></figure>
+    <figure class="clip port" data-src="static/videos/gs88_outside.mp4" data-tag="Outside" data-cap="88 x 66"></figure>
+    <figure class="clip port" data-src="static/videos/gs0_outside.mp4" data-tag="Outside" data-cap="No tactile"></figure>
+  </div>
+  <button class="more" data-target="more-gs">More</button>
+</section>
+
+<section>
+  <h2>Other Tasks</h2>
+  <p class="lead">The same system applied to different objects.</p>
+  <div class="grid g2">
+    <div class="task">
+      <h3>Nut</h3>
+      <div class="grid g2">
+        <figure class="clip port" data-src="static/videos/nut_outside.mp4" data-tag="Outside"></figure>
+        <figure class="clip" data-src="static/videos/nut_inside.mp4" data-tag="Inside"></figure>
+      </div>
+    </div>
+    <div class="task">
+      <h3>Rubber</h3>
+      <div class="grid g2">
+        <figure class="clip port" data-src="static/videos/rubber_outside.mp4" data-tag="Outside"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>This page is anonymized for review.</footer>
+</main>
+<script>
+document.querySelectorAll('.clip').forEach(fig=>{
+  const {src,tag,cap}=fig.dataset;
+  const v=document.createElement('video');
+  Object.assign(v,{src,muted:true,loop:true,autoplay:true,playsInline:true,preload:'metadata'});
+  v.setAttribute('muted','');v.setAttribute('playsinline','');
+  v.onerror=()=>{const d=document.createElement('div');d.className='ph';d.textContent=src;v.replaceWith(d)};
+  fig.append(v);
+  if(tag){const t=document.createElement('span');t.className='tag';t.textContent=tag;fig.append(t)}
+  const s=document.createElement('span');s.className='tag r';s.textContent='2x';fig.append(s);
+  if(cap){const c=document.createElement('figcaption');c.textContent=cap;fig.append(c)}
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{e.isIntersecting?e.target.play().catch(()=>{}):e.target.pause()}),{threshold:.1});
+document.querySelectorAll('video').forEach(v=>io.observe(v));
+document.querySelectorAll('.more').forEach(b=>b.onclick=()=>{
+  const el=document.getElementById(b.dataset.target);
+  b.textContent=el.classList.toggle('hidden')?'More':'Less';
+});
+</script>
+</body>
+</html>
