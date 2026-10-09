@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PAPER TITLE</title>
+<title>Contact-Rich Fine Multi-Finger Manipulation</title>
 <meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -50,14 +50,14 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-top:26px}
 <body>
 <main>
 <header>
-  <h1>PAPER TITLE</h1>
+  <h1>Contact-Rich Fine Multi-Finger Manipulation for Multiple Object Separation with Optical Tactile Sensing and Imitation Learning</h1>
   <p class="sub">Anonymous Submission</p>
-  <p class="sub" style="font-size:14px;margin-top:8px">All videos are muted and played at 2x speed.</p>
+  <p class="sub" style="font-size:14px;margin-top:8px">All videos are muted. The playback speed is shown in each clip.</p>
 </header>
 
 <section>
   <h2>Abstract</h2>
-  <p class="abstract">ABSTRACT TEXT.</p>
+  <p class="abstract">Automobiles are composed of multiple parts, many of which are deformable such as thin cables and rubber sheets. Automating the handling of these deformable objects remains a difficult task for robot hands, as it requires recognizing fine contact states while performing dexterous take-out motions under continuous change. In this study, we propose an imitation learning pipeline for multi-fingered fine dexterous manipulation with human-mimetic optical tactile sensors at the thumb and index fingertips, while the other three fingers support the objects against gravity, which is critical for deformable linear objects (DLOs). Demonstrations are collected by data-glove teleoperation to capture humans' synchronized smooth motions, and Action Chunking with Transformer (ACT) generates human-like motion through its action chunking and temporal ensembling. The observation consists of two external camera images (640 x 480), two fingertip tactile images (500 x 375), and the joint angles of a 6-DOF UR5e arm and a 20-DOF DG-5F hand. Taking the separation of a target cable from a cable bundle as the main task, the ACT achieves an 80% success rate, and remains capable against cables of unseen thickness. A comparative experiment reveals the advantage of high-resolution tactile information: 500 x 375 achieves the best success rates compared with models trained at lower resolutions. A cross-attention analysis shows that the policy shifts its attention away from the fingertip as the resolution drops. We further show that the pipeline extends to other fine multiple-object tasks, such as fastening a nut and separating a rubber waterproof packing from a hook-hung stack. The fastening task embraces a one-object-to-multiple-objects touch as an inverted scenario of the main cable task, verifying the generalizability of the proposed method to such touch states.</p>
 </section>
 
 <section>
@@ -156,7 +156,6 @@ document.querySelectorAll('.clip').forEach(fig=>{
   v.onerror=()=>{const d=document.createElement('div');d.className='ph';d.textContent=src;v.replaceWith(d)};
   fig.append(v);
   if(tag){const t=document.createElement('span');t.className='tag';t.textContent=tag;fig.append(t)}
-  const s=document.createElement('span');s.className='tag r';s.textContent='2x';fig.append(s);
   if(cap){const c=document.createElement('figcaption');c.textContent=cap;fig.append(c)}
 });
 const io=new IntersectionObserver(es=>es.forEach(e=>{e.isIntersecting?e.target.play().catch(()=>{}):e.target.pause()}),{threshold:.1});
